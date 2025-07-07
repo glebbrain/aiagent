@@ -1,71 +1,73 @@
-# unified-llm-mcp-interface README
+# AI Agent
+A tool for integrating LLM (AI) with project management automation, code generation and external systems (MCP) to speed up development and prototyping.
 
-This is the README for your extension "unified-llm-mcp-interface". After writing up a brief description, we recommend including the following sections.
+## Status
+⚠️ The project is under development. Errors and incomplete functionality are possible.
 
-## Features
+## Installation
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
+1. Clone the repository:
+```sh
+git clone https://github.com/glebbrain/aiagent.git
+```
+2. Install dependencies:
+```sh
+npm install
+```
 ---
 
-## Following extension guidelines
+## Quick Start
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+1. Open the project in VS Code.
+2. Open package.json section "configuration":
+   2.1. interface.language: "en" or "ru"
+   2.2. debug: true - for develop
+   2.3. project.path: path to the project that will be developed by the AI Agent
+   2.4. llm.endpoint: ollama: http://localhost:11434/api/chat or gemini with llm.apiKey
+   2.5. mcp.endpointServer(for example: unity-6000): http://localhost:8090/
+4. Build:
+```sh
+npm run compile
+```
+4. Run the extension (F9)
+5. F1 -> AgentAI: Open Panel -> Enter
+6. Enter a prompt in the field
+7. Click Launch
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+Settings Unity MCP-Sever:
+1. Start Unity 6000
+2. Create or open project
+3. Copy folder from "" to ""
+4. Start MCP-Server
+---
 
-## Working with Markdown
+## Roadmap
+- [x] How the extension works: user enter prompt -> architect -> analyst -> developer -> (create/update files, update methods and execute commands in MCP-Server)
+- [X] Basic orchestration of tasks by specialists: architect -> analyst -> developer
+- [x] Editing prompts for specialists
+- [x] Basic integration with LLM (Gemini)
+- [x] MCP-Server for test: Unity 6000
+- [x] Generating and using file/method/MCP commands
+- [ ] Transactionality and rollback of changes on errors
+- [ ] Integration with another LLM (Perplexity, OpenAI, etc.)
+- [ ] Integration with another MCP-Servers
+- [ ] Add/change specialists
+- [ ] Interactive dialog with the user (AI clarifies details)
+- [ ] Visualization of changes (diff before/after)
+- [ ] API to internal functions
+- [ ] Interaction with any external API 
+- [ ] Adding tests to the core functionality
+- [ ] Extensible architecture for plugins
+- [ ] Integration with CI/CD and automated tests
+- [ ] AI code review and explanations of changes
+- [ ] Improved security and command validation
+- [ ] Documentation and usage examples  
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+## Bug report
+https://github.com/glebbrain/aiagent/issues/new?template=bug_report.md
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+## Feature request
+https://github.com/glebbrain/aiagent/issues/new?template=feature_request.md
 
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+## License
+MIT License
