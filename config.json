@@ -1,0 +1,341 @@
+{
+  "run": {
+    "type": "group",
+    "label": "Run",
+    "items": {
+      
+      "widowWithResults": {
+        "value": "",
+        "type": "textarea",
+        "label": {
+          "en": "Show Results",
+          "ru": "Показать результаты"
+        },
+        "description": {
+          "en": "Display the results in a new window.",
+          "ru": "Отобразить результаты в новом окне."
+        }
+      },
+      "promt": {
+        "value": true,
+        "type": "textarea",
+        "label": {
+          "en": "Prompt",
+          "ru": "Подсказка"
+        },
+        "description": {
+          "en": "Prompt for the LLM model to generate code.",
+          "ru": "Подсказка для модели LLM для генерации кода."
+        }
+      },
+      "threads": {
+        "value": 4,
+        "type": "number",
+        "min": 1,
+        "max": 16,
+        "label": {
+          "en": "Max Threads",
+          "ru": "Максимальное количество потоков"
+        },
+        "description": {
+          "en": "Maximum number of threads to use for processing.",
+          "ru": "Максимальное количество потоков для обработки."
+        }
+      },
+      "logWindow": {
+        "value": "",
+        "type": "textarea",
+        "label": {
+          "en": "Log Window",
+          "ru": "Окно журнала"
+        },
+        "description": {
+          "en": "Enable the log window for debugging.",
+          "ru": "Включить окно журнала для отладки."
+        }
+      }
+    }
+  },
+  "settings": {
+    "type": "group",
+    "label": "Settings",
+    "items": {
+      "projectPath": {
+        "value": "",
+        "type": "string",
+        "label": {
+          "en": "Project Path",
+          "ru": "Путь к проекту"
+        },
+        "description": {
+          "en": "Path to the project directory where files will be stored.",
+          "ru": "Путь к каталогу проекта, где будут храниться файлы."
+        }
+      },
+      "roles": {
+        "value": "analyst->developer",
+        "type": "multi-select",
+        "options": ["analyst","developer","tester","analyst->developer", "analyst->developer->tester"],
+        "label": {
+          "en": "Roles",
+          "ru": "Роли"
+        },
+        "description": {
+          "en": "Select the roles that will be used in the project.",
+          "ru": "Выберите роли, которые будут использоваться в проекте."
+        }
+      },
+      "llmModels": {
+        "value": "DeepSeek",
+        "type": "select",
+        "options": ["DeepSeek", "Ollama", "ChatGPT"],
+        "label": {
+          "en": "LLM Model",
+          "ru": "Модель LLM"
+        },
+        "description": {
+          "en": "Select the LLM model to use for code generation.",
+          "ru": "Выберите модель LLM для генерации кода."
+        }
+      },
+      "mcpServers": {
+        "value": "Unity",
+        "type": "select",
+        "options": ["Unity", "VSCode", "PHP", "MySQL", "Python", "Laravel"],
+        "label": {
+          "en": "MCP Server",
+          "ru": "Сервер MCP"
+        },
+        "description": {
+          "en": "Select the MCP server for file and process control.",
+          "ru": "Выберите сервер MCP для управления файлами и процессами."
+        }
+      },
+      "logging": {
+        "value": true,
+        "type": "boolean",
+        "label": {
+          "en": "Enable Logging", 
+          "ru": "Включить ведение журнала"
+        },
+        "description": {
+          "en": "Enable detailed logging for debugging and analysis.",
+          "ru": "Включить подробное ведение журнала для отладки и анализа."
+        }
+      },
+      "language": {
+        "value": "en",
+        "type": "select",
+        "options": ["en", "ru"],
+        "label": {
+          "en": "Language",
+          "ru": "Язык"
+        },
+        "description": {
+          "en": "Select the language for the interface and prompts.",
+          "ru": "Выберите язык для интерфейса и подсказок."
+        }
+      }
+    }
+  },
+
+
+  "llmModels": {
+    "Ollama": {
+      "endpoint": "http://localhost:11434",
+      "modelName": "deepseek-coder",
+      "options": {
+        "top_p": 0.9,
+        "max_new_tokens": 512
+      },
+      "format": {
+        "type": "object",
+        "properties": {
+          "age": {
+            "type": "integer"
+          },
+          "available": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "age",
+          "Формат нужен для понимения какие данные возвращает модель"
+        ]
+      },
+      "description": {
+        "en": "Ollama server running locally",
+        "ru": "Локальный сервер Ollama"
+      }
+    },
+    "ChatGPT": {
+      "endpoint": "https://api.openai.com/v1/chat/completions",
+      "apiKey": "YOUR_OPENAI_API_KEY",
+      "options": {
+        "model": "gpt-4",
+        "temperature": 0.3,
+        "max_tokens": 1500
+      },
+      "description": {
+        "en": "OpenAI ChatGPT via official API",
+        "ru": "Официальный API ChatGPT от OpenAI"
+      }
+    },
+    "DeepSeek": {
+      "endpoint": "http://localhost:3000/deepseek",
+      "apiKey": "",
+      "options": {
+        "temperature": 0.7,
+        "maxTokens": 1024
+      },
+      "description": {
+        "en": "DeepSeek local instance for on-prem inference",
+        "ru": "Локальный экземпляр DeepSeek для инференса на месте"
+      }
+    }
+    
+  },
+
+  "mcpServers":{
+    "Unity": {
+      "endpoint": "http://localhost:4000/mcp",
+      "timeoutMs": 30000,
+      "description": {
+        "en": "MCP server for file & process control",
+        "ru": "MCP-сервер для управления файлами и процессами"
+      }
+    },
+    "VSCode": {
+      "endpoint": "http://localhost:5001/mcp",
+      "timeoutMs": 30000,
+      "description": {
+        "en": "VSCode-based MCP server for file control",
+        "ru": "Сервер MCP на базе VSCode для управления файлами"
+      }
+    },
+    "PHP": {
+      "endpoint": "http://localhost:5000/mcp",
+      "timeoutMs": 30000,
+      "description": {
+        "en": "PHP-based MCP server for advanced control",
+        "ru": "Сервер MCP на PHP для расширенного управления"
+      }
+    },
+    "MySQL": {
+      "endpoint": "http://localhost:3306/mcp",
+      "timeoutMs": 30000,
+      "description": {
+        "en": "MySQL-based MCP server for database control",
+        "ru": "Сервер MCP на MySQL для управления базами данных"
+      }
+    },
+    "Python": {
+      "endpoint": "http://localhost:6000/mcp",
+      "timeoutMs": 30000,
+      "description": {
+        "en": "Python-based MCP server for advanced control",
+        "ru": "Сервер MCP на Python для расширенного управления"
+      }
+    },
+    "Laravel": {
+      "endpoint": "http://localhost:7000/mcp",
+      "timeoutMs": 30000,
+      "description": {
+        "en": "Laravel-based MCP server for advanced control",
+        "ru": "Сервер MCP на Laravel для расширенного управления"
+      }
+    }
+  },
+
+  "roles": {
+    "analyst": {
+      "displayName": {
+        "en": "Analyst",
+        "ru": "Аналитик"
+      },
+      "prompts": {
+        "system": {
+          "en": "You must be an analyst and break the problem down into sub-problems before proposing a solution.",
+          "ru": "Ты должен быть аналитиком и подробно разбить задачу на подзадачи перед тем, как предложить решение."
+        },
+        "user": {
+          "en": "{analysisContext}\n\nPlease identify potential issues and design patterns.",
+          "ru": "{analysisContext}\n\nПожалуйста, определите возможные проблемы и шаблоны проектирования."
+        }
+      }
+    },
+    "developer": {
+      "displayName": {
+        "en": "Developer",
+        "ru": "Разработчик"
+      },
+      "prompts": {
+        "system": {
+          "en": "You are a senior developer. Generate or modify code according to the user's instructions.",
+          "ru": "Вы — старший разработчик. Генерируйте или изменяйте код согласно инструкциям пользователя."
+        },
+        "user": {
+          "en": "{userRequest}\n\nUse the previous analysis to craft precise code changes.",
+          "ru": "{userRequest}\n\nИспользуйте предыдущий анализ для точных изменений в коде."
+        }
+      }
+    }
+  },
+
+  "prompts": {
+    "general": {
+      "en": "Please provide the code snippet you want to analyze or modify.",
+      "ru": "Пожалуйста, предоставьте фрагмент кода, который вы хотите проанализировать или изменить."
+    },
+    "analysisContext": {
+      "en": "Context for analysis: {context}",
+      "ru": "Контекст для анализа: {context}"
+    },
+    "userRequest": {
+      "en": "User request: {request}",
+      "ru": "Запрос пользователя: {request}"
+    }
+
+  },
+
+
+  "exampleUiParams":{
+    "projectName": {
+        "value": "test",
+        "type": "string",
+        "label": "Project Name"
+      },
+      "threads": {
+        "value": 4,
+        "type": "number",
+        "min": 1,
+        "max": 16,
+        "label": "Max Threads"
+      },
+      "mode": {
+        "value": "advanced",
+        "type": "select",
+        "options": ["basic", "intermediate", "advanced"],
+        "label": "Execution Mode"
+      },
+      "logging": {
+        "value": true,
+        "type": "boolean",
+        "label": "Enable Logging"
+      },
+      
+      "execution": {
+        "type": "group",
+        "label": "Execution Options",
+        "items": {
+          "logging": {
+            "value": true,
+            "type": "boolean",
+            "label": "Enable Logging"
+          }
+        }
+      }
+  }
+  
+}
+

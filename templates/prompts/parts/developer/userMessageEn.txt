@@ -1,0 +1,10 @@
+Task context:
+Project information:{~ProjectInfo~}.
+Task:{~TaskName~}.
+Task description:{~TaskDescription~}.
+Task priority:{~TaskPriority~}.
+Layers:{~Layers~}.
+Recommended patterns:{~RecommendedPattern~}.
+StoryPoints:{~TaskStoryPoints~}.
+Project method files:[{~FilesWithMethods~}].
+Available MCP commands:[{~AvailableMCPcommands~}].

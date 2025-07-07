@@ -1,0 +1,14 @@
+Please develop a detailed plan for creating "{~UserRequest~}"
+
+When designing, consider the following aspects to ensure reliability and usability:
+
+* **Performance:** The application should respond quickly to user actions even with a large number of tasks.
+* **Security:** User data should be reliably protected (storing passwords, preventing XSS and CSRF attacks).
+* **Scalability:** The architecture should allow for expanding the functionality of the application in the future without significant rework.
+* **User-friendly interface (UI) and experience (UX):** The interface should be intuitive and pleasant to use.
+* **Testing:** Describe what types of tests need to be conducted to ensure the quality of the application (unit tests, integration tests, end-to-end tests).
+* **Technology Selection:** Suggest a technology stack (frontend, backend, database) and justify your choice, taking into account the project requirements and best practices.
+* **Project Structure:** Describe the proposed modular structure of the project and the interaction between the components.
+* **Error Handling:** Describe how errors and exceptions will be handled on the frontend and backend.
+
+The result of your work should be a detailed project plan that includes all of the above aspects, as well as any other considerations that you, as an experienced architect, consider important for the successful implementation of a reliable and high-quality application.

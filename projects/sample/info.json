@@ -1,0 +1,25 @@
+{
+    "projectName": "sample",
+    "version": "1.0.0",
+    "description": "A sample project",
+    "language": "PHP 8.0",
+    "framework": "Laravel 8",
+    "dependencies": {
+        "laravel/framework": "^8.0",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "cms": {
+        "phpunit/phpunit": "^9.0",
+        "mockery/mockery": "^1.4"
+    },
+    "database": {
+        "mysql": "^8.0",
+        "sqlite": "^3.0"
+    },
+    "author": "",
+    "license": "",
+    "ignore": [
+        "node_modules",
+        "vendor"
+    ]
+}

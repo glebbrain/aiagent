@@ -1,0 +1,155 @@
+{
+    "active": true,
+    "name": "MCP Server for Unity 6000",
+    "url": "http://localhost:5000/mcp-unity-server-6000",
+    "description": "MCP Server for Unity 6000 with actions: start, stop, get-log, get-mcp-commands, gameobject-find, gameobject-create, gameobject-update, gameobject-destroy",
+    "type": "mcp-server",
+    "version": "0.0.1",
+    "auth": {
+        "login": "",
+        "password": "",
+        "token": ""
+    },
+    "timeout": 300,
+    "actions": [
+        {
+            "action": "set-connection",
+            "description": "set MCP server connection",
+            "parameters": {
+                "workspaceFolder": "${workspaceFolder}",
+                "logLevel": "all",
+                "logFile": "${workspaceFolder}/.logs/mcp-server-unity-6000.log"
+            }
+        },
+        {
+            "action": "start",
+            "description": "start Unity",
+            "parameters": {}
+        },
+        {
+            "action": "stop",
+            "description": "stop Unity",
+            "parameters": {}
+        },
+        {
+            "action": "get-status",
+            "description": "get Unity status",
+            "parameters": {}
+        },
+        {
+            "action": "get-log",
+            "description": "get Unity log",
+            "parameters": {}
+        },
+        {
+            "action": "get-mcp-commands",
+            "description": "get MCP commands",
+            "parameters": {}
+        },
+        {
+            "action":"get-all-gameobjects",
+            "description": "get all game objects",
+            "parameters": {}
+        },
+        {
+            "action": "gameobject-find",
+            "description": "find game object",
+            "parameters": {
+                "name": "",
+                "scene": "",
+                "position": [0, 0, 0],
+                "rotation": [0, 0, 0],
+                "scale": [1, 1, 1],
+                "tag": "",
+                "layer": "",
+                "material": "",
+                "texture": "",
+                "color": "",
+                "lightType": "",
+                "lightRange": "",
+                "lightIntensity": "",
+                "animation": "",
+                "prefab": "",
+                "background": "",
+                "skybox": "",
+                "path": "",
+                "obj": ""
+            }
+        },
+        {
+            "action": "gameobject-create",
+            "description": "create game object",
+            "parameters": {
+                "name": "",
+                "scene": "",
+                "position": [0, 0, 0],
+                "rotation": [0, 0, 0],
+                "scale": [1, 1, 1],
+                "tag": "",
+                "layer": "",
+                "material": "",
+                "texture": "",
+                "color": "",
+                "lightType": "",
+                "lightRange": "",
+                "lightIntensity": "",
+                "animation": "",
+                "prefab": "",
+                "background": "",
+                "skybox": "",
+                "path": "",
+                "obj": ""
+            }
+        },
+        {
+            "action": "gameobject-update",
+            "description": "update game object",
+            "parameters": {
+                "name": "",
+                "scene": "",
+                "position": [0, 0, 0],
+                "rotation": [0, 0, 0],
+                "scale": [1, 1, 1],
+                "tag": "",
+                "layer": "",
+                "material": "",
+                "texture": "",
+                "color": "",
+                "lightType": "",
+                "lightRange": "",
+                "lightIntensity": "",
+                "animation": "",
+                "prefab": "",
+                "background": "",
+                "skybox": "",
+                "path": "",
+                "obj": ""
+            }
+        },
+        {
+            "action": "gameobject-destroy",
+            "description": "destroy game object",
+            "parameters": {
+                "name": "",
+                "scene": "",
+                "position": [0, 0, 0],
+                "rotation": [0, 0, 0],
+                "scale": [1, 1, 1],
+                "tag": "",
+                "layer": "",
+                "material": "",
+                "texture": "",
+                "color": "",
+                "lightType": "",
+                "lightRange": "",
+                "lightIntensity": "",
+                "animation": "",
+                "prefab": "",
+                "background": "",
+                "skybox": "",
+                "path": "",
+                "obj": ""
+            }
+        }
+    ]
+}

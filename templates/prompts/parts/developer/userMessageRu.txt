@@ -1,0 +1,10 @@
+Контекст по задаче:
+Информация о проекте:{~ProjectInfo~}.
+Задача:{~TaskName~}.
+Описание задачи:{~TaskDescription~}.
+Приоритет задачи:{~TaskPriority~}.
+Уровни:{~Layers~}.
+Рекомендованный шаблоны:{~RecommendedPattern~}.
+StoryPoints:{~TaskStoryPoints~}.
+Файлы c методами проекта:[{~FilesWithMethods~}].
+Доступные команды MCP:[{~AvailableMCPcommands~}].

@@ -1,0 +1,378 @@
+{
+  "active": true,
+  "name": "Ollama",
+  "description": "Ollama is a powerful language model for various tasks.",
+  "version": "0.0.1",
+  "type": "llm-service",
+  "url": "http://localhost:11434",
+  "auth": {
+    "login": "",
+    "password": "",
+    "token": ""
+  },
+  "timeout": 300,
+  "num_keep": {
+    "type": "integer",
+    "minimum": 0,
+    "maximum": null,
+    "default": 0,
+    "description": {
+      "en": "This option specifies the number of initial tokens from the prompt that the model should keep during the generation process.",
+      "ru": "Определяет количество токенов из начального контекста, которые модель должна сохранить при генерации новых токенов. Это полезно для поддержания согласованности и контекста на протяжении длинных генераций или нескольких взаимодействий."
+    },
+    "influence": {
+      "en": "It's useful for maintaining context and consistency throughout longer generations or multi-turn conversations. A value greater than 0 instructs the model to `remember` the specified number of leading tokens and consider them when generating subsequent tokens. Increasing this can improve coherence but also increases computational cost. A value of 0 means no initial context is preserved after the initial context window is processed.",
+      "ru": " Если установлено значение больше 0, модель будет `помнить` указанное количество первых токенов и учитывать их при генерации последующих токенов. Увеличение этого значения может повысить когерентность, но также увеличивает вычислительные затраты. Значение 0 означает, что никакой начальный контекст не сохраняется при генерации новых токенов после достижения конца контекстного окна."
+    }
+  },
+  "seed": {
+    "type": "integer",
+    "minimum": null,
+    "maximum": null,
+    "default": "random",
+    "description": {
+      "en": "This sets the random seed for the number generator. Using the same seed ensures deterministic (reproducible) results for identical inputs and parameters.",
+      "ru": "Устанавливает начальное значение для генератора случайных чисел. Это позволяет получать детерминированные (воспроизводимые) результаты при одинаковых входных данных и параметрах."
+    },
+    "influence": {
+      "en": "If you use the same seed, the model will generate the exact same sequence of tokens. Different seeds will lead to different, potentially more varied, outputs. This is helpful for debugging, testing, or when you need consistent results.",
+      "ru": "Если вы используете одно и то же значение seed, модель будет генерировать идентичные последовательности токенов при одинаковых запросах и настройках. Это полезно для отладки, тестирования или когда вам нужно обеспечить воспроизводимость результатов. Разные значения seed приведут к разным, потенциально более разнообразным, результатам."
+    }
+  },
+  "num_predict": {
+    "type": "integer",
+    "minimum": 1,
+    "maximum": null,
+    "default": 128,
+    "description": {
+      "en": "This parameter defines the maximum number of new tokens the model should generate in its response.",
+      "ru": "Определяет максимальное количество новых токенов, которые модель должна сгенерировать в ответе."
+    },
+    "influence": {
+      "en": "It controls the length of the generated text. Increasing this allows for longer answers but also increases processing time and might lead to the model going off-topic or a decrease in quality.",
+      "ru": "Контролирует длину генерируемого текста. Увеличение этого значения позволяет модели генерировать более длинные ответы, но также увеличивает время обработки и может привести к отклонению от темы или снижению качества."
+    }
+  },
+  "top_k": {
+    "type": "integer",
+    "minimum": 1,
+    "maximum": null,
+    "default": 40,
+    "description": {
+      "en": "This option specifies the number of most likely next tokens to consider during sampling.",
+      "ru": "Определяет количество наиболее вероятных следующих токенов, которые рассматриваются при выборке."
+    },
+    "influence": {
+      "en": "It influences the randomness and creativity of the output. Smaller values of top_k make the sampling more deterministic, focusing on the most probable options, which can result in more predictable and less creative responses. Larger values allow the model to consider more options, leading to more diverse and surprising outputs.",
+      "ru": "Управляет случайностью и креативностью выводимого текста. Меньшие значения top_k делают выборку более детерминированной и фокусируются на наиболее вероятных вариантах, что может привести к более предсказуемым и менее креативным ответам. Большие значения top_k позволяют модели рассматривать большее количество вариантов, что может сделать ответы более разнообразными и неожиданными."
+    }
+  },
+  "top_p": {
+    "type": "float",
+    "minimum": 0,
+    "maximum": 1,
+    "default": 0.95,
+    "description": {
+      "en": "Also known as nucleus sampling, this method considers the smallest set of most probable tokens whose cumulative probability exceeds the value of top_p",
+      "ru": "Еще один метод выборки, который учитывает кумулятивную вероятность. Модель рассматривает наименьший набор наиболее вероятных токенов, чья кумулятивная вероятность превышает значение top_p."
+    },
+    "influence": {
+      "en": "It's another way to control the randomness and creativity. Lower values of top_p make the sampling more focused on the most probable tokens, while higher values allow for the inclusion of rarer but still probable tokens, leading to more diverse outputs. It's generally recommended to use either top_k or top_p, but not both simultaneously.",
+      "ru": "Аналогично top_k, top_p контролирует случайность и креативность. Более низкие значения top_p делают выборку более сфокусированной на наиболее вероятных токенах, в то время как более высокие значения позволяют включать более редкие, но все же вероятные токены, что может привести к более разнообразным ответам. Рекомендуется использовать top_k или top_p, но не оба одновременно."
+    }
+  },
+  "min_p": {
+    "type": "float",
+    "minimum": 0,
+    "maximum": 1,
+    "default": 0.05,
+    "description": {
+      "en": "This sets a minimum probability threshold for tokens to be considered for sampling.",
+      "ru": "Устанавливает минимальную вероятность для токенов, которые могут быть выбраны. Токены с вероятностью ниже этого значения исключаются из рассмотрения."
+    },
+    "influence": {
+      "en": "Tokens with a probability below this value are filtered out. It helps to eliminate very unlikely and often nonsensical tokens, thus improving the quality of the generated text.",
+      "ru": "Помогает отфильтровать маловероятные и часто бессмысленные токены, повышая таким образом качество генерируемого текста."
+    }
+  },
+  "typical_p": {
+    "type": "float",
+    "minimum": 0,
+    "maximum": 1,
+    "default": 1,
+    "description": {
+      "en": "This sampling method aims to select tokens from the `typical` probability mass, avoiding both highly probable (which can lead to repetition) and very improbable tokens.",
+      "ru": "Метод выборки, который стремится выбирать токены из `типичного` набора вероятностей, избегая как слишком вероятных (что может привести к повторениям), так и слишком маловероятных токенов."
+    },
+    "influence": {
+      "en": "It can improve the coherence and naturalness of the generated text, making it less prone to repetitions or gibberish. A value of 1.0 disables this option.",
+      "ru": "Может улучшить когерентность и естественность генерируемого текста, делая его менее склонным к повторениям или бессмыслице. Значение 1.0 отключает эту опцию."
+    }
+  },
+  "repeat_last_n": {
+    "type": "integer",
+    "minimum": 0,
+    "maximum": null,
+    "default": 64,
+    "description": {
+      "en": "This determines the number of last tokens the model considers when applying the repeat penalty.",
+      "ru": "Определяет количество последних токенов, которые модель учитывает при применении штрафа за повторение."
+    },
+    "influence": {
+      "en": "It controls how sensitive the model is to repeating the same sequences of tokens. Increasing this value makes the model more likely to penalize repetitions occurring further back in the context.",
+      "ru": "Контролирует, насколько модель склонна повторять одни и те же последовательности токенов. Увеличение этого значения делает модель более чувствительной к повторениям в более длинном контексте."
+    }
+  },
+  "temperature": {
+    "type": "float",
+    "minimum": 0,
+    "maximum": null,
+    "default": 0.8,
+    "description": {
+      "en": "This parameter controls the randomness of the token sampling process. Higher values make the probability distribution of the next token more uniform, increasing randomness and creativity. Lower values make the distribution sharper, making the model more deterministic and predictable. ",
+      "ru": "Управляет случайностью выборки токенов. Более высокие значения делают распределение вероятностей более равномерным, увеличивая случайность и креативность. Более низкие значения делают распределение более резким, делая модель более детерминированной и предсказуемой."
+    },
+    "influence": {
+      "en": "Values close to 0 (not recommended) can lead to repetitive output, while values above 1.0 can result in very unpredictable and sometimes nonsensical text.",
+      "ru": "Значения близкие к 0 (не рекомендуется, может привести к зацикливанию) делают модель очень детерминированной и всегда выбирают наиболее вероятный следующий токен. Значения около 0.5 делают вывод более сбалансированным между детерминизмом и случайностью. Значения около 1.0 делают вывод более случайным и креативным. Значения выше 1.0 могут привести к очень непредсказуемым и иногда бессмысленным результатам."
+    }
+  },
+  "repeat_penalty": {
+    "type": "float",
+    "minimum": 0,
+    "maximum": null,
+    "default": 1.1,
+    "description": {
+      "en": "This penalty is applied to the probability of tokens that have already appeared within the last repeat_last_n tokens.",
+      "ru": "Штраф, применяемый к вероятности уже встречавшихся токенов в пределах последних repeat_last_n токенов."
+    },
+    "influence": {
+      "en": "It discourages the model from repeating the same words or phrases. Values greater than 1.0 increase the penalty, making repetitions less likely.",
+      "ru": "Предотвращает повторение одних и тех же слов или фраз. Значения больше 1.0 увеличивают штраф и делают повторения менее вероятными."
+    }
+  },
+  "presence_penalty": {
+    "type": "float",
+    "minimum": -2,
+    "maximum": 2,
+    "default": 0,
+    "description": {
+      "en": "This penalty is applied to the probability of tokens that are already present in the generated text (regardless of their position).",
+      "ru": "Штраф, применяемый к вероятности токенов, которые уже присутствуют в сгенерированном тексте (независимо от их позиции)."
+    },
+    "influence": {
+      "en": "It encourages the model to use a more diverse vocabulary and avoid repeating topics or concepts at the word level. Positive values increase the penalty, while negative values decrease it (encouraging repetition).",
+      "ru": "Поощряет модель к использованию более разнообразной лексики и избеганию повторения тем или концепций на уровне отдельных слов. Положительные значения увеличивают штраф, отрицательные — уменьшают (поощряют повторение)."
+    }
+  },
+  "frequency_penalty": {
+    "type": "float",
+    "minimum": -2,
+    "maximum": 2,
+    "default": 0,
+    "description": {
+      "en": "This penalty is applied to the probability of tokens that have already appeared in the generated text, proportional to their frequency.",
+      "ru": "Штраф, применяемый к вероятности токенов, которые уже встречались в сгенерированном тексте, пропорционально их частоте."
+    },
+    "influence": {
+      "en": "Similar to presence_penalty, it further discourages the repetition of specific words or phrases, promoting more varied and `fresh` output. Positive values increase the penalty, while negative values decrease it.",
+      "ru": "Еще больше, чем presence_penalty, препятствует частому повторению определенных слов или фраз, способствуя более разнообразному и `свежему` выводу. Положительные значения увеличивают штраф, отрицательные — уменьшают."
+    }
+  },
+  "mirostat": {
+    "type": "integer",
+    "minimum": 0,
+    "maximum": 2,
+    "default": 0,
+    "description": {
+      "en": "This is an algorithm for controlling the quality of the output by attempting to maintain a consistent level of `surprise` (perplexity) in the generated text.",
+      "ru": "Алгоритм контроля качества вывода, который пытается поддерживать согласованную `удивительность` (perplexity) текста."
+    },
+    "influence": {
+      "en": "0: Disables Mirostat. 1: Enables Mirostat v1. 2: Enables Mirostat v2 (experimental). Mirostat can help generate more natural and less repetitive text by dynamically adjusting sampling parameters based on the current perplexity of the generated text.",
+      "ru": "0: Отключает Mirostat. 1: Включает Mirostat v1. 2: Включает Mirostat v2 (экспериментальный).Mirostat может помочь генерировать более естественный и менее повторяющийся текст, динамически регулируя параметры выборки на основе текущей `удивительности` генерируемого текста."
+    }
+  },
+  "mirostat_tau": {
+    "type": "float",
+    "minimum": 0,
+    "maximum": null,
+    "default": 5,
+    "description": {
+      "en": "This parameter controls the `temperature` for the Mirostat algorithm.",
+      "ru": "Параметр контроля `температуры` для Mirostat."
+    },
+    "influence": {
+      "en": "Lower values lead to more focused and less surprising text, while higher values allow for more diversity.",
+      "ru": "Более низкие значения приводят к более сфокусированному и менее удивительному тексту. Более высокие значения допускают большее разнообразие."
+    }
+  },
+  "mirostat_eta": {
+    "type": "float",
+    "minimum": 0,
+    "maximum": null,
+    "default": 0.1,
+    "description": {
+      "en": "This is the learning rate parameter for the Mirostat algorithm",
+      "ru": "Параметр скорости обучения для Mirostat."
+    },
+    "influence": {
+      "en": "Controlling how quickly Mirostat adapts to changes in the `surprise` of the text.",
+      "ru": "Контролирует, насколько быстро Mirostat адаптируется к изменениям в `удивительности` текста."
+    }
+  },
+  "penalize_newline": {
+    "type": "boolean",
+    "default": true,
+    "description": {
+      "en": "This option determines whether to penalize the generation of newline characters.",
+      "ru": "Определяет, следует ли штрафовать генерацию новых строк."
+    },
+    "influence": {
+      "en": "If set to true, the model will be less likely to generate frequent line breaks, which can be useful for generating denser text.",
+      "ru": "Если установлено в true, модель будет менее склонна генерировать частые разрывы строк, что может быть полезно для генерации более плотного текста."
+    }
+  },
+  "stop": {
+    "type": "array of strings",
+    "default": [],
+    "description": {
+      "en": "This is a list of strings that, if encountered in the generated text, will immediately stop the generation process.",
+      "ru": "Список строк, при обнаружении которых генерация должна быть немедленно остановлена."
+    },
+    "influence": {
+      "en": "It allows you to control the length and content of the output by halting it upon reaching specific markers (e.g., end of sentence, start of a new section, or a specific keyword).",
+      "ru": "Позволяет контролировать длину и содержание генерируемого текста, прерывая его при достижении определенных маркеров (например, конца предложения, начала новой секции или определенного ключевого слова)."
+    }
+  },
+  "numa": {
+    "type": "boolean",
+    "default": false,
+    "description": {
+      "en": "This flag indicates whether to use NUMA (Non-Uniform Memory Access) optimizations if the system supports them.",
+      "ru": "Указывает, следует ли использовать оптимизации NUMA (Non-Uniform Memory Access), если система их поддерживает."
+    },
+    "influence": {
+      "en": "It can improve performance on multi-processor systems with NUMA architecture by optimizing memory access.",
+      "ru": "Может повысить производительность на многопроцессорных системах с NUMA-архитектурой, оптимизируя доступ к памяти."
+    }
+  },
+  "num_ctx": {
+    "type": "integer",
+    "minimum": 1,
+    "maximum": null,
+    "default": 2048,
+    "description": {
+      "en": "This sets the size of the model's context window in tokens.",
+      "ru": "Устанавливает размер контекстного окна модели в токенах."
+    },
+    "influence": {
+      "en": "It determines how many preceding tokens the model can consider when generating the next one. A larger context window allows the model to better understand longer dependencies and generate more coherent text but requires more memory and computational resources.",
+      "ru": "Определяет, сколько предыдущих токенов модель может учитывать при генерации следующего. Большее контекстное окно позволяет модели лучше понимать более длинные зависимости и генерировать более когерентный текст, но также требует больше памяти и вычислительных ресурсов."
+    }
+  },
+  "num_batch": {
+    "type": "integer",
+    "minimum": 1,
+    "maximum": null,
+    "default": 512,
+    "description": {
+      "en": "This defines the number of tokens processed in a single batch during generation.",
+      "ru": "Определяет размер пакета токенов, которые обрабатываются за один проход во время генерации."
+    },
+    "influence": {
+      "en": "It affects the speed and efficiency of the generation process. Larger batches can improve performance but require more memory.",
+      "ru": "Влияет на скорость и эффективность генерации. Большие пакеты могут повысить производительность, но требуют больше памяти."
+    }
+  },
+  "num_gpu": {
+    "type": "integer",
+    "minimum": -1,
+    "maximum": null,
+    "default": -1,
+    "description": {
+      "en": "This specifies the number of GPUs to use for processing.",
+      "ru": "Указывает количество GPU, которые следует использовать для обработки. "
+    },
+    "influence": {
+      "en": "-1 means using all available GPUs. A positive value indicates the specific number of GPUs to utilize, which can be useful in systems with multiple GPUs.",
+      "ru": "-1 означает использование всех доступных GPU. Положительное значение указывает конкретное количество GPU для использования, что может быть полезно в системах с несколькими GPU."
+    }
+  },
+  "main_gpu": {
+    "type": "integer",
+    "minimum": 0,
+    "maximum": null,
+    "default": 0,
+    "description": {
+      "en": "This determines the index of the primary GPU to use for computations.",
+      "ru": "Определяет индекс основной GPU, которая будет использоваться для вычислений."
+    },
+    "influence": {
+      "en": "It can be useful in multi-GPU systems for load balancing or specifying which GPU should host certain parts of the model.",
+      "ru": "Может быть полезно в системах с несколькими GPU для распределения нагрузки или для указания, на какой GPU размещать определенные части модели."
+    }
+  },
+  "low_vram": {
+    "type": "boolean",
+    "default": false,
+    "description": {
+      "en": "This flag enables optimizations aimed at reducing video memory (VRAM) usage.",
+      "ru": "Флаг для использования оптимизаций, направленных на снижение потребления видеопамяти (VRAM)."
+    },
+    "influence": {
+      "en": "If set to true, the model will consume less VRAM, which can be necessary on GPUs with limited memory, but might come at the cost of reduced performance.",
+      "ru": "Если установлено в true, модель будет использовать меньше VRAM, что может быть необходимо на GPU с ограниченным объемом памяти, но может привести к снижению производительности."
+    }
+  },
+  "vocab_only": {
+    "type": "boolean",
+    "default": false,
+    "description": {
+      "en": "This option, if set to true, will only load the model's vocabulary without the weights.",
+      "ru": "Загружать только словарный запас модели, без весов."
+    },
+    "influence": {
+      "en": "It's useful for certain vocabulary-related tasks but does not allow for text generation.",
+      "ru": "Полезно для определенных задач, связанных с анализом словарного запаса, но не позволяет выполнять генерацию текста."
+    }
+  },
+  "use_mmap": {
+    "type": "boolean",
+    "default": true,
+    "description": {
+      "en": "This indicates whether to use memory-mapped files (mmap) for loading the model",
+      "ru": "Использовать mmap (memory-mapped files) для загрузки модели."
+    },
+    "influence": {
+      "en": "It can speed up the loading of large models and reduce RAM usage.",
+      "ru": "Может повысить скорость загрузки больших моделей и снизить потребление оперативной памяти."
+    }
+  },
+  "use_mlock": {
+    "type": "boolean",
+    "default": false,
+    "description": {
+      "en": "If set to true, this option uses mlock to try to keep the model in RAM, preventing it from being swapped out to disk.",
+      "ru": "Использовать mlock для удержания модели в оперативной памяти, предотвращая ее выгрузку в swap."
+    },
+    "influence": {
+      "en": "This can improve performance by avoiding swap-related delays but increases RAM usage and requires administrator privileges.",
+      "ru": "Может повысить производительность за счет исключения задержек, связанных со своппингом, но увеличивает потребление оперативной памяти. Требует прав администратора."
+    }
+  },
+  "num_thread": {
+    "type": "integer",
+    "minimum": 1,
+    "maximum": null,
+    "default": "number of CPU cores",
+    "description": {
+      "en": "This sets the number of CPU threads to use for processing.",
+      "ru": "Устанавливает количество CPU-потоков, используемых для обработки."
+    },
+    "influence": {
+      "en": "It affects the speed of processing, especially for CPU-bound tasks. Increasing the number of threads can improve performance on multi-core systems.",
+      "ru": "Влияет на скорость обработки, особенно на CPU-зависимых этапах. Увеличение количества потоков может повысить производительность на многоядерных системах."
+    }
+  }
+}

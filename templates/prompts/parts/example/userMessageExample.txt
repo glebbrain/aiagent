@@ -1,0 +1,26 @@
+Project files:
+[
+  { "path": "src/Main.cs", "content": "class Main { ... }" },
+  { "path": "src/Utils/Math.cs", "content": "class Math { ... }" }
+]
+Existing methods:
+[
+  { "className": "Main", "signature": "void Start()" },
+  { "className": "Math", "signature": "int Add(int a, int b)" }
+]
+Available MCP commands:
+[
+  { "action": "gameobject-find",    "parameters": { "name": "Player" } },
+  { "action": "gameobject-create",  "parameters": { "prefab": "Enemy", "position": [0,1,0] } },
+  { "action": "gameobject-change",  "parameters": { "id": 42, "scale": 1.5 } },
+  { "action": "gameobject-delete",  "parameters": { "id": 99 } }
+]
+
+User Request:
+"Добавь в класс Main метод 'void Stop()' с телом:
+{
+    // Завершает игру
+    GameManager.Quit();
+}
+Обнови метод 'int Add(int a, int b)' в Math.cs, чтобы он логировал входные параметры перед вычислением.  
+И после этого создай новый gameobject 'NPC' на позиции [5,0,2]."

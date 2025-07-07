@@ -1,0 +1,36 @@
+{
+    "description": "problem solving tasks",
+    "context": "This is a sample context for the tasks.",
+    "tasks": [
+        {
+            "number": 1,
+            "description": "task1",
+            "promts-answers-parts": 0,
+            "subtasks": [
+                {
+                    "number": 1,
+                    "description": "task1.1 description",
+                    "fileCommands": [{
+                        "action": "create",
+                        "path": "task1.1.txt",
+                        "content": "task1.1 content"
+                    }],
+                    "methodCommands": [{
+                        "action": "create",
+                        "className": "Main",
+                        "methodSignature": "void Stop()",
+                        "methodBody": "{\n    // Завершает игру\n    GameManager.Quit();\n}"
+                    }],
+                    "mcpCommands": [{
+                        "action": "gameobject-create",
+                        "parameters": {
+                            "prefab": "NPC",
+                            "position": [5,0,2]
+                        }
+                    }],
+                }
+            ]
+
+        }
+    ]
+}

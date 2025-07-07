@@ -1,0 +1,5 @@
+Project context:
+Project info:{~ProjectInfo~}. 
+Files With Methods:[{~FilesWithMethods~}]. 
+User Request:"{~UserRequest~}".
+Project analysis by an architect:"{~ArchitectPrompt~}".

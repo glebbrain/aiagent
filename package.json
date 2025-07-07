@@ -1,0 +1,178 @@
+{
+  "name": "universal-agent-ai",
+  "displayName": "AgentAI: Open Panel",
+  "description": "Enhance your VSCode experience with the Universal LLM & MCP Interface, a powerful extension designed to bridge the gap between code development, artificial intelligence, and external control platforms. This extension allows you to effortlessly connect to and interact with a wide range of Large Language Models (LLMs) for tasks like code generation, analysis, and documentation. Additionally, it enables you to send commands and manage various Multi-Control Platforms (MCPs) directly from your editor, offering unprecedented integration and efficiency.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.99.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.cjs",
+  "contributes": {
+    "commands": [
+      {
+        "command": "agentai.openPanel",
+        "title": "AgentAI: Open Panel"
+      },
+      {
+        "command": "agentai.launch",
+        "title": "AgentAI: Launch AgentAI"
+      },
+      {
+        "command": "agentai.saveLLMSettings",
+        "title": "AgentAI: Save LLM Settings"
+      },
+      {
+        "command": "agentai.saveMCPSettings",
+        "title": "AgentAI: Save MCP Settings"
+      },
+      {
+        "command": "agentai.addLLM",
+        "title": "AgentAI: Add LLM"
+      },
+      {
+        "command": "agentai.addMCP",
+        "title": "AgentAI: Add MCP"
+      },
+      {
+        "command": "agentai.selectFolder",
+        "title": "AgentAI: Select Folder"
+      }
+    ],
+    "configuration": {
+      "title": "AI Agent",
+      "properties": {
+        "interface.language": {
+          "type": "string",
+          "default": "en",
+          "description": "This setting determines the language used in the extension's UI and messages. May be 'en' for English, 'ru' for Russian, etc."
+        },
+        "debug": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable debug mode for the extension. When enabled, additional debug information will be logged to the console."
+        },
+        "project.path": {
+          "type": "string",
+          "default": "${workspaceFolder}",
+          "description": "Path to the project directory. This is used to determine the root of the project for LLM and MCP operations."
+        },
+        "llm.endpoint": {
+          "type": "string",
+          "default": "http://localhost:11434/api/chat",
+          "description": "Name json endpoint for the LLM service. This is used to send requests to the LLM for code generation, analysis, and other tasks."
+        },
+        "llm.model": {
+          "type": "string",
+          "default": "deepseek-coder",
+          "description": "Name of the LLM model to use for requests."
+        },
+        "llm.endpointJsonName": {
+          "type": "string",
+          "default": "ollama",
+          "description": "Name json endpoint for the LLM service. This is used to send requests to the LLM for code generation, analysis, and other tasks."
+        },
+        "llm.endpointServer": {
+          "type": "string",
+          "default": "",
+          "description": "ollama server: http://localhost:11434/api/chat , or deepseek server: http://localhost:3000/deepseek"
+        },
+        "llm.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "API key for the LLM service. This is used to authenticate requests to the LLM."
+        },
+        "mcp.endpointJsonName": {
+          "type": "string",
+          "default": "mcp-server-unity-6000",
+          "description": "Name json endpoint for the MCP service. This is used to send requests to the MCP for various operations."
+        },
+        "mcp.endpointServer": {
+          "type": "string",
+          "default": "http://localhost:8090/",
+          "description": "Name json endpoint for the MCP service. This is used to send requests to the MCP for various operations."
+        },
+        "github.repoPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to the GitHub repository. This is used to interact with the GitHub API for various operations."
+        },
+        "github.remoteName": {
+          "type": "string",
+          "default": "origin",
+          "description": "Name of the remote GitHub repository."
+        },
+        "github.branchName": {
+          "type": "string",
+          "default": "main",
+          "description": "Name of the GitHub branch."
+        },
+        "logging.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable or disable logging for the extension. When enabled, logs will be written to the specified log directory."
+        },
+        "logging.logLevel": {
+          "type": "string",
+          "default": "all",
+          "enum": [
+            "error",
+            "warn",
+            "info",
+            "debug",
+            "all"
+          ],
+          "description": "Set the log level for the extension. This controls the verbosity of the logs written to the log files."
+        },
+        "logging.logDirectory": {
+          "type": "string",
+          "default": "{$workspaceFolder}/.logs",
+          "description": "Path to directory for log files."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "tsc -watch -p ./",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.9.36",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "20.x",
+    "@types/sqlite3": "^3.1.11",
+    "@types/vscode": "^1.99.0",
+    "@types/xml2js": "^0.4.14",
+    "@typescript-eslint/eslint-plugin": "^8.28.0",
+    "@typescript-eslint/parser": "^8.28.0",
+    "eslint": "^9.23.0",
+    "ignore": "^7.0.4",
+    "ts-loader": "^9.5.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1",
+    "webpack-node-externals": "^3.0.0"
+  },
+  "dependencies": {
+    "-": "^0.0.1",
+    "@google/generative-ai": "^0.24.1",
+    "axios": "^1.9.0",
+    "date-fns": "^4.1.0",
+    "sqlite3": "^5.1.7",
+    "xml2js": "^0.6.2"
+  },
+  "overrides": {
+    "minimatch": "^3.1.2",
+    "minimist": "^1.2.8"
+  }
+}
