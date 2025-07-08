@@ -18,14 +18,22 @@ npm install
 
 ## Quick Start
 
-1. Open the project in VS Code.
+Setting up a Unity MCP-Sever:
+1. Start Unity 6000
+2. Create or open project
+3. Copy folder from "examples-mcp-servers/Assets" to "/Assets"
+4. Restart Unity
+5. Tools -> Custom Tools Window
+6. Set port and push the button: "Start Server"
+
+Setting up the AI Agent
+1. Open the project in VSCode.
 2. Open package.json section "configuration":
-   2.1. interface.language: "en" or "ru"
-   2.2. debug: true - for develop
-   2.3. project.path: path to the project that will be developed by the AI Agent
-   2.4. llm.endpoint: ollama: http://localhost:11434/api/chat or gemini with llm.apiKey
-   2.5. mcp.endpointServer(for example: unity-6000): http://localhost:8090/
-4. Build:
+   2.1. debug: true - for develop
+   2.2. project.path: path to the project that will be developed by the AI Agent
+   2.3. llm.endpoint: ollama: http://localhost:11434/api/chat or gemini with llm.apiKey
+   2.4. mcp.endpointServer(for example: unity-6000): http://localhost:8090/
+3. Build:
 ```sh
 npm run compile
 ```
@@ -34,11 +42,6 @@ npm run compile
 6. Enter a prompt in the field
 7. Click Launch
 
-Settings Unity MCP-Sever:
-1. Start Unity 6000
-2. Create or open project
-3. Copy folder from "" to ""
-4. Start MCP-Server
 ---
 
 ## Roadmap
