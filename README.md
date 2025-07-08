@@ -72,5 +72,8 @@ https://github.com/glebbrain/aiagent/issues/new?template=bug_report.md
 ## Feature request
 https://github.com/glebbrain/aiagent/issues/new?template=feature_request.md
 
+## Contacts
+https://x.com/glebbrain
+
 ## License
 MIT License
